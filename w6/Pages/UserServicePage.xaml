@@ -1,0 +1,41 @@
+﻿<Page x:Class="w6.Pages.UserServicePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:w6.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserServicePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBox Name="cbSearch" TextChanged="cbSearch_TextChanged" Margin="10"/>
+            <ComboBox Name="cbSort" SelectionChanged="cbSort_SelectionChanged" Margin="10"/>
+        </UniformGrid>
+        <ListView Name="LvService" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding MainImage, TargetNullValue={StaticResource Picture}}"/>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Description}"/>
+                    <TextBlock Text="{Binding Cost, StringFormat='Стоимость: #.00'}"/>
+                </StackPanel>
+                <Button Content="Заисаться" Name="btAdd" Click="btAdd_Click" Grid.Column="2"/>
+            </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
